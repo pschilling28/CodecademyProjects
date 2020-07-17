@@ -66,31 +66,45 @@ year_dictionary = convert_to_year(hurricane_dictionary)
 
 # write your count affected areas function here:
 def areas_affected_frequency(hurricane_dictionary):
-    pass
+    new_dictionary = {}
+    for hurricane in hurricane_dictionary:
+        for area in hurricane_dictionary[hurricane]["Areas Affected"]:
+            if area not in new_dictionary:
+                new_dictionary[area] = 1
+            else:
+                new_dictionary[area] += 1
+    return new_dictionary
 
-
-
-
-
+area_count_dictionary = areas_affected_frequency(hurricane_dictionary)
+#print(area_count_dictionary)
 
 # write your find most affected area function here:
+def most_affected(area_dictionary):
+    area = ""
+    affect_count = 0
+    for key, value in area_dictionary.items():
+        if value > affect_count:
+            area = key
+            affect_count = value
+    return area, affect_count
 
-
-
-
-
-
+most_affected_area = most_affected(area_count_dictionary)
+#print(most_affected_area)
 
 # write your greatest number of deaths function here:
+def most_deaths(hurricane_dictionary):
+    hurricane_name = ""
+    death_count = 0
+    for hurricane in hurricane_dictionary:
+        if hurricane_dictionary[hurricane]["Deaths"] > death_count:
+            death_count = hurricane_dictionary[hurricane]["Deaths"]
+            hurricane_name = hurricane_dictionary[hurricane]["Name"]
+    return hurricane_name, death_count
 
+highest_deaths = most_deaths(hurricane_dictionary)
+print(highest_deaths)
 
-
-
-
-
-
-# write your catgeorize by mortality function here:
-
+# write your categorize by mortality function here:
 
 
 
