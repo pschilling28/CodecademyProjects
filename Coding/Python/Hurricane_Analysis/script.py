@@ -37,28 +37,36 @@ def strings_to_dollars(list):
     return new_list
                     
 new_damages = strings_to_dollars(damages)
-print(new_damages)
+#print(new_damages)
 
 # write your construct hurricane dictionary function here:
-def construct_hurricane_dictionary(names_list, months_list, years_list, max_sustained_winds_list, areas_affected_list, deaths_list):
+def construct_hurricane_dictionary(names_list, months_list, years_list, max_sustained_winds_list, areas_affected_list, damages_list, deaths_list):
     new_dictionary = {}
-    pass
+    for i in range(len(names_list)):
+        new_dictionary[names_list[i]] = {"Name": names_list[i], "Month": months_list[i], "Year": years_list[i], "Max Sustained Wind": max_sustained_winds_list[i], "Areas Affected": areas_affected_list[i], "Damage": damages_list[i], "Deaths": deaths_list[i]}
+    return new_dictionary
 
-
-
-
-
+hurricane_dictionary = construct_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, new_damages, deaths)
+#print(hurricane_dictionary["Cuba I"]["Year"])
 
 # write your construct hurricane by year dictionary function here:
+def convert_to_year(dictionary):
+    new_dictionary = {}
+    for item in dictionary:
+        current_year = dictionary[item]["Year"]
+        current_item = dictionary[item]
+        if current_year not in new_dictionary:
+            new_dictionary[current_year] = [current_item]
+        else:
+            new_dictionary[current_year].append(current_item)
+    return new_dictionary
 
-
-
-
-
-
+year_dictionary = convert_to_year(hurricane_dictionary)
+#print(year_dictionary[1932])
 
 # write your count affected areas function here:
-
+def areas_affected_frequency(hurricane_dictionary):
+    pass
 
 
 
