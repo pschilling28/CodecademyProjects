@@ -102,14 +102,21 @@ def most_deaths(hurricane_dictionary):
     return hurricane_name, death_count
 
 highest_deaths = most_deaths(hurricane_dictionary)
-print(highest_deaths)
+#print(highest_deaths)
 
 # write your categorize by mortality function here:
+mortality_scale = {0: 0, 1: 100, 2: 500, 3: 1000, 4: 10000}
 
+def mortality_rating(hurricane_dictionary):
+    mortality_dictionary = {key: [] for key in range(5)}
+    for hurricane in hurricane_dictionary:
+        for i in range(4):
+            if hurricane_dictionary[hurricane]["Deaths"] > mortality_scale[i] and hurricane_dictionary[hurricane]["Deaths"] <= mortality_scale[i + 1]:
+                mortality_dictionary[i + 1].append(hurricane_dictionary[hurricane]["Name"])       
+    return mortality_dictionary
 
-
-
-
+mortality_dictionary = mortality_rating(hurricane_dictionary)
+#print(mortality_dictionary)
 
 # write your greatest damage function here:
 
