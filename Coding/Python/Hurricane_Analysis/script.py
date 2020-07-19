@@ -47,7 +47,7 @@ def construct_hurricane_dictionary(names_list, months_list, years_list, max_sust
     return new_dictionary
 
 hurricane_dictionary = construct_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, new_damages, deaths)
-#print(hurricane_dictionary["Cuba I"]["Year"])
+#print(hurricane_dictionary["Cuba I"]["Damage"])
 
 # write your construct hurricane by year dictionary function here:
 def convert_to_year(dictionary):
@@ -119,11 +119,31 @@ mortality_dictionary = mortality_rating(hurricane_dictionary)
 #print(mortality_dictionary)
 
 # write your greatest damage function here:
+def most_damage(hurricane_dictionary):
+    hurricane_name = ""
+    damage_count = 0
+    for hurricane in hurricane_dictionary:
+        if hurricane_dictionary[hurricane]["Damage"] != "Damages not recorded":
+            if hurricane_dictionary[hurricane]["Damage"] > damage_count:
+                damage_count = hurricane_dictionary[hurricane]["Damage"]
+                hurricane_name = hurricane_dictionary[hurricane]["Name"]
+    return hurricane_name, damage_count
 
-
-
-
-
+highest_damage = most_damage(hurricane_dictionary)
+#print(highest_damage)
 
 
 # write your catgeorize by damage function here:
+damage_scale = {0: 0, 1: 100000000, 2: 1000000000, 3: 10000000000, 4: 50000000000}
+
+def damage_rating(hurricane_dictionary):
+    damage_dictionary = {key: [] for key in range(5)}
+    for hurricane in hurricane_dictionary:
+        for i in range(4):
+            if hurricane_dictionary[hurricane]["Damage"] != "Damages not recorded":
+                if hurricane_dictionary[hurricane]["Damage"] > damage_scale[i] and hurricane_dictionary[hurricane]["Damage"] <= damage_scale[i + 1]:
+                    damage_dictionary[i + 1].append(hurricane_dictionary[hurricane]["Name"])   
+    return damage_dictionary
+
+damage_dictionary = damage_rating(hurricane_dictionary)
+#print(damage_dictionary)
