@@ -94,7 +94,7 @@ def build_wheel():
 def play_roulette(*bets_calls):
     global money
     wheel = build_wheel()
-    spin = wheel[random.randint(1, 38)]
+    spin = wheel[random.randint(1, 36)]
     winnings = 0
     total_bet = 0
     print("The wheel lands on %s." % spin[0])
@@ -116,50 +116,50 @@ def play_roulette(*bets_calls):
                 # color win
                 if call.lower() == spin[1]:
                     winnings += bet * 2
-                    print("Call of %s pays out %i." % (call, bet))
+                    print("Call of %s pays out $%i." % (call, bet))
                 #column wins
                 elif call.lower() == "c1" and spin[0] % 3 == 1:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, (bet * 2)))
+                    print("Call of %s pays out $%i." % (call, (bet * 2)))
                 elif call.lower() == "c2" and spin[0] % 3 == 2:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, (bet * 2)))
+                    print("Call of %s pays out $%i." % (call, (bet * 2)))
                 elif call.lower() == "c3" and spin[0] % 3 == 0:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, (bet * 2)))
+                    print("Call of %s pays out $%i." % (call, (bet * 2)))
                 # even/odd wins
                 elif call.lower() == "odd" and spin[0] % 2 == 0:
                     winnings += bet * 2
-                    print("Call of %s pays out %i." % (call, bet))
+                    print("Call of %s pays out $%i." % (call, bet))
                 elif call.lower() == "even" and spin[0] % 2 == 0:
                     winnings += bet * 2
-                    print("Call of %s pays out %i." % (call, bet))
+                    print("Call of %s pays out $%i." % (call, bet))
                 # low/high wins
                 elif call.lower() == "low" and spin[0] >= 1 and spin[0] <= 18:
                     winnings += bet * 2
-                    print("Call of %s pays out %i." % (call, bet))
+                    print("Call of %s pays out $%i." % (call, bet))
                 elif call.lower() == "high" and spin[0] >= 19 and spin[0] <= 36:
                     winnings += bet * 2
-                    print("Call of %s pays out %i." % (call, bet))
+                    print("Call of %s pays out $$%i." % (call, bet))
                 # dozen wins
                 elif call.lower() == "1st12" and spin[0] >= 1 and spin[0] <= 12:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, bet * 2))
+                    print("Call of %s pays out $%i." % (call, bet * 2))
                 elif call.lower() == "2nd12" and spin[0] >= 13 and spin[0] <= 24:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, bet * 2))
+                    print("Call of %s pays out $%i." % (call, bet * 2))
                 elif call.lower() == "3rd12" and spin[0] >= 25 and spin[0] <= 36:
                     winnings += bet * 3
-                    print("Call of %s pays out %i." % (call, bet * 2))
+                    print("Call of %s pays out $%i." % (call, bet * 2))
     money += winnings
     return "Your bet(s) netted you $%i. You now have $%i" % (winnings, money)
                 
 #Call your game of chance functions here
-coin_flip = play_coin_flip("heads", 50)
-print(coin_flip)
-cho_han = play_cho_han("odd", 10)
-print(cho_han)
-war = play_war(10)
-print(war)
-roulette = play_roulette((100, "black"))
+#coin_flip = play_coin_flip("heads", 50)
+#print(coin_flip)
+#cho_han = play_cho_han("odd", 10)
+#print(cho_han)
+#war = play_war(10)
+#print(war)
+roulette = play_roulette((100, "00"))
 print(roulette)
