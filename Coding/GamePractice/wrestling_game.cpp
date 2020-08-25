@@ -3,7 +3,7 @@
 #include "functions.hpp"
 
 int main() {
-    intro_screen();
-    coach_intro();
+    //intro_screen();
+    //coach_intro();
     create_wrestler();
 }
