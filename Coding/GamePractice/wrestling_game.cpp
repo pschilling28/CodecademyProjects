@@ -5,5 +5,6 @@
 int main() {
     //intro_screen();
     //coach_intro();
-    create_wrestler();
+    //create_wrestler();
+    test_function();
 }

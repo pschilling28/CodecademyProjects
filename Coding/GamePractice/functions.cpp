@@ -2,6 +2,9 @@
 #include <vector>
 #include "functions.hpp"
 
+std::string player_name;
+int weight_class;
+std::string background;
 
 void intro_screen() {
     std::cout << "|                                                                                             |\n";
@@ -35,12 +38,12 @@ void intro_screen() {
     std::cin.ignore();
 }
 
-class Wrestler {
+/*class Wrestler {
     public:
         std::string name, style, background;
         int weight_class, agility, strength, stamina, technique;
         std::vector<std::string> technique_list;
-};
+};*/
 
 void coach_intro() {
     std::cout << "???: \"Welcome to the first day of practice, 9th-graders. My name is Pat. You can call me      \n";
@@ -57,10 +60,7 @@ void coach_intro() {
     std::cout << "\n";
     std::cout << "                                                                        PRESS ENTER TO CONTINUE\n";
     std::cin.ignore();
-
 }
-std::string player_name;
-int weight_class;
 
 void name_wrestler() {
     char choice;
@@ -79,15 +79,19 @@ void name_wrestler() {
             break;
         } else {
             std::cout << "                                      INVALID CHOICE. TYPE EITHER 'Y' OR 'N', FOLLOWED BY ENTER\n";
+            std::cout << "\n";
         }
     }
 }
+
 void choose_weight_class() {
     char choice;
     std::cout << "COACH: \"Alright, " << player_name << ", in what weight class do you plan to wrestle? In case  \n";
     std::cout << "you didn't know, there are fourteen weight classes this season. They are as follows in pounds: \n";
     std::cout << "106, 113, 120, 126, 132, 138, 145, 152, 160, 170, 182, 195, 220, 285.                          \n";
     std::cout << "                                                                                               \n";
+    std::cout << "                                                                        PRESS ENTER TO CONTINUE\n";
+    std::cin.ignore();
     std::cout << player_name << ": \"I think I can make...\"\n";
     std::cout << "                                                     CHOOSE YOUR WEIGHT CLASS, THEN PRESS ENTER\n";
     std::cin >> weight_class;
@@ -112,11 +116,69 @@ void choose_weight_class() {
             break;
         } else {
             std::cout << "                                      INVALID CHOICE. TYPE EITHER 'Y' OR 'N', FOLLOWED BY ENTER\n";
+            std::cout << "\n";
+        }
+    }
+}
+
+void choose_background() {
+    char choice;
+    std::cout << "COACH: \"Alright, " << player_name << ". I've got you jotted down for the " << weight_class << "-pound weight class.\"\n";
+    std::cout << "                                                                        PRESS ENTER TO CONTINUE\n";
+    std::cin.ignore();
+    std::cout << "COACH: \"So tell me about yourself, " << player_name << ".\"\n";
+    std::cout << "\n";
+    std::cout << "YOU CAN CHOOSE FROM FIVE BACKGROUNDS: FREESTYLER, FUNK, MATRAT, THROWER, MUSCLER. TYPE THE NAME\n";
+    std::cout << "OF ONE TO LEARN MORE.\n";
+    std::cin >> background;
+    while (choice != 'Y' && choice != 'y') {
+        while (background != "FREESTYLER" && background != "FUNK" && background != "MATRAT" && background != "THROWER" && background != "MUSCLER" && background != "freestyler" && background != "funk" && background != "matrat" && background != "thrower" && background != "muscler" && background != "Freestyler" && background != "Funk" && background != "Matrat" && background != "Thrower" && background != "Muscler") {
+            std::cout << player_name << ": \"Well, I'm mainly a " << background << ".\"\n";
+            std::cout << "COACH: \"" << background << "? I don't know what that means.\"\n";
+            std::cout << "                                                                                               \n";
+            std::cout << "YOU CAN CHOOSE FROM FIVE BACKGROUNDS: FREESTYLER, FUNK, MATRAT, THROWER, MUSCLER. TYPE THE NAME\n";
+            std::cout << "OF ONE TO LEARN MORE.\n";
+            std::cin >> background;
+        }
+        if (background == "FREESTYLER" || background == "freestyler" || background == "Freestyler") {
+            std::cout << "freestyler test, press Y or N";
+            std::cin >> choice;
+        } else if (background == "FUNK" || background == "funk" || background == "Funk") {
+            std::cout << "funk test, press Y or N";
+            std::cin >> choice;
+        } else if (background == "MATRAT" || background == "matrat" || background == "Matrat") {
+            std::cout << "matrat test, press Y or N";
+            std::cin >> choice;
+        } else if (background == "THROWER" || background == "thrower" || background == "Thrower") {
+            std::cout << "thrower test, press Y or N";
+            std::cin >> choice;
+        } else if (background == "MUSCLER" || background == "muscler" || background == "Muscler") {
+            std::cout << "muscler test, press Y or N";
+            std::cin >> choice;
+        } else {
+            std::cout << "Error in code in choose_background";
+        }
+        if (choice == 'N' || choice == 'n') {
+            std::cout << "COACH: \"Okay, then what weight class?\n";
+            std::cout << "                                                                                               \n";
+            std::cout << "YOU CAN CHOOSE FROM FIVE BACKGROUNDS: FREESTYLER, FUNK, MATRAT, THROWER, MUSCLER. TYPE THE NAME\n";
+            std::cout << "OF ONE TO LEARN MORE.\n";
+            std::cin >> background;
+        } else if (choice == 'Y' || choice == 'y') {
+            break;
+        } else {
+            std::cout << "                                      INVALID CHOICE. TYPE EITHER 'Y' OR 'N', FOLLOWED BY ENTER\n";
+            std::cout << "\n";
         }
     }
 }
 
 void create_wrestler() {
     //name_wrestler();
-    choose_weight_class();
+    //choose_weight_class();
+}
+
+void test_function() {
+    //name_wrestler();
+    choose_background();
 }
