@@ -174,11 +174,12 @@ void choose_background() {
 }
 
 void create_wrestler() {
-    //name_wrestler();
-    //choose_weight_class();
+    name_wrestler();
+    choose_weight_class();
+    choose_background();
 }
 
 void test_function() {
-    //name_wrestler();
+    name_wrestler();
     choose_background();
 }
